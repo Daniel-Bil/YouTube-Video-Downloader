@@ -74,9 +74,22 @@ class YouTubeDownloader(QWidget):
 
         try:
             # Download video using yt-dlp
+
+            try:
+                # PyInstaller creates a temp folder and stores path in _MEIPASS when frozen
+                base_path = Path(sys._MEIPASS)
+            except AttributeError:
+                # If not frozen, use the current directory (normal Python execution)
+                base_path = Path()
+
+            # Locate ffmpeg in the temp directory or working directory
+            ffmpeg_path = base_path / "ffmpeg" / "bin" / "ffmpeg.exe"
+
             ydl_opts = {
                 'outtmpl': str(self.download_directory / '%(title)s.%(ext)s'),
                 'format': 'bestvideo+bestaudio/best',
+
+                'ffmpeg_location': ffmpeg_path,
             }
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:

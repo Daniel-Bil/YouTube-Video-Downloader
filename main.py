@@ -14,7 +14,13 @@ class YouTubeDownloader(QWidget):
 
         # Set up the window
         my_icon = QIcon()
-        my_icon.addFile(str(Path("images/icon.png")))
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS when frozen
+            icon_base_path = Path(sys._MEIPASS)
+        except AttributeError:
+            # If not frozen, use the current directory (normal Python execution)
+            icon_base_path = Path()
+        my_icon.addFile(str(icon_base_path / Path("images/icon.png")))
         self.setWindowIcon(my_icon)
 
         self.setWindowTitle("YouTube Downloader")

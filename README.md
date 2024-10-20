@@ -12,6 +12,13 @@ The **YouTube Video Downloader** allows you to easily download YouTube videos in
 - Utilizes `ffmpeg` for video processing (bundled with the app).
 
 ## Installation
+### 1. Clone the Repository
+
+1. Clone this repository to your local machine
+2. Download [ffmpeg](https://ffmpeg.org/download.html) and put it inside "ffmpeg" dir inside project
+   
+### 2. Get exe from releases
+
 To download the latest version of the YouTube Video Downloader, visit the [Releases Page](https://github.com/Daniel-Bil/YouTube-Video-Downloader/releases).
 
 1. Download the executable `.exe` file from the releases page.
